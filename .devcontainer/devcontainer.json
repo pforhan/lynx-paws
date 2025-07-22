@@ -1,0 +1,57 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/debian
+{
+    // The name that appears in the VS Code bottom bar when connected to the container.
+    // This enhances clarity for your specific Lynx development environment.
+    // The sources indicate changing the name from a generic one (e.g., "Alpine") to something like "CC65" [3].
+    "name": "Atari Lynx Dev Environment (CC65)",
+
+    // Specifies the Dockerfile to use for building the development container image.
+    // This points to the comprehensive Dockerfile you've placed in the same .devcontainer folder.
+    // The process of replacing the generated Dockerfile with your custom one implies this connection [1-3].
+    "build": {
+        "dockerfile": "Dockerfile"
+        // You could also add "context": ".." here if your .devcontainer folder is not at the project root
+        // and your source code is in the parent directory, but for a standard template, "Dockerfile" is usually sufficient.
+    },
+
+    // Specifies the user to run as inside the container.
+    // Using a non-root user (like 'vscode') is a security best practice,
+    // though the provided Dockerfile typically runs as root initially for installations.
+    // This specific line is not explicitly from the provided sources but is a common and recommended practice
+    // when setting up Dev Containers to avoid running VS Code processes as root inside the container.
+    // This information is outside the given sources and you may want to independently verify it.
+    "remoteUser": "vscode",
+
+    // This section allows you to customize VS Code's behavior specifically for this development container.
+    "customizations": {
+        "vscode": {
+            // A list of VS Code extension IDs that should be automatically installed
+            // when you open your project in this development container.
+            // These extensions are highly recommended for C/Assembly development,
+            // but their inclusion here is not directly from the provided sources.
+            // This information is outside the given sources and you may want to independently verify it.
+            "extensions": [
+                "ms-vscode.cpptools", // C/C++ Extension Pack for IntelliSense, debugging, and code browsing.
+                "ms-vscode.cmake-tools", // If you use CMake for project management (not explicitly mentioned but common for C/C++).
+                "vadimcn.vscode-lldb", // A debugger extension, useful for debugging compiled code.
+                "mhutchie.git-graph", // Visualizes Git history.
+                "bierner.emojisense", // Provides emoji auto-completion (less critical for Lynx dev, but common).
+                "redhat.vscode-yaml", // Useful for editing YAML files, including devcontainer.json itself.
+                "EditorConfig.EditorConfig", // Helps maintain consistent coding styles.
+                "ms-vscode.hexeditor" // Useful for viewing compiled binaries or raw data.
+            ],
+            // VS Code settings that will be applied when you are inside this container.
+            // These settings are not directly from the provided sources but are common and useful for development.
+            // This information is outside the given sources and you may want to independently verify it.
+            "settings": {
+                // Set the default shell for the integrated terminal within the container.
+                "terminal.integrated.shell.linux": "/bin/bash",
+                // Other settings like font size, line endings, etc., can be added here.
+                "files.eol": "\n", // Ensure Linux-style line endings.
+                "editor.tabSize": 4, // Common tab size for C/C++ projects.
+                "editor.insertSpaces": true // Use spaces instead of tabs.
+            }
+        }
+    }
+}
